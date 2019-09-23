@@ -40,13 +40,9 @@ var templates = generateData();
 
 function renderWizard(obj) {
   var element = template.cloneNode(true);
-  var wizardName = element.querySelector('.setup-similar-label');
-  var wizardCoat = element.querySelector('.wizard-coat');
-  var wizardEyes = element.querySelector('.wizard-eyes');
-
-  wizardName.textContent = obj.name;
-  wizardCoat.style.fill = obj.coatColor;
-  wizardEyes.style.fill = obj.eyesColor;
+  element.querySelector('.setup-similar-label').textContent = obj.name;
+  element.querySelector('.wizard-coat').style.fill = obj.coatColor;
+  element.querySelector('.wizard-eyes').style.fill = obj.eyesColor;
   fragment.appendChild(element);
 }
 
