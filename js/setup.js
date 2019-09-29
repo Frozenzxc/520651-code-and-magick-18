@@ -24,7 +24,7 @@ function randomElm(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-var generateData = function () {
+function generateData() {
   var arr = [];
   for (var i = 0; i < WIZARD_COUNT; i++) {
     arr[i] = {
@@ -34,9 +34,9 @@ var generateData = function () {
     };
   }
   return arr;
-};
+}
 
-var templates = generateData();
+var wizardsData = generateData();
 
 function renderWizard(obj) {
   var element = template.cloneNode(true);
@@ -46,8 +46,8 @@ function renderWizard(obj) {
   fragment.appendChild(element);
 }
 
-for (var i = 0; i < templates.length; i++) {
-  renderWizard(templates[i]);
+for (var i = 0; i < wizardsData.length; i++) {
+  renderWizard(wizardsData[i]);
 }
 
 wizardList.appendChild(fragment);
