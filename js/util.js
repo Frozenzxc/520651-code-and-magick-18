@@ -1,10 +1,10 @@
 'use strict';
 
-window.util = (function () {
+(function () {
   var ESC_KEYCODE = 27;
   var ENTER_KEYCODE = 13;
 
-  return {
+  window.util = {
     getRandomElm: function (arr) {
       return arr[Math.floor(Math.random() * arr.length)];
     },
