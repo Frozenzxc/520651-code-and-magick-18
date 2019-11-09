@@ -6,6 +6,7 @@
   var setupClose = setup.querySelector('.setup-close');
   var dialogHandler = setup.querySelector('.upload');
   var similarBox = document.querySelector('.setup-similar');
+  var form = setup.querySelector('.setup-wizard-form');
   similarBox.classList.remove('hidden');
 
   function openPopup() {
@@ -87,4 +88,26 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   });
+
+  function onError(errorMessage) {
+    var node = document.createElement('div');
+    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    node.style.position = 'absolute';
+    node.style.left = 0;
+    node.style.right = 0;
+    node.style.fontSize = '30px';
+
+    node.textContent = errorMessage;
+    document.body.prepend(node);
+  }
+
+  form.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(form), function (response) {
+      if (response) {
+        setup.classList.add('hidden');
+      }
+    }, onError);
+    evt.preventDefault();
+  });
+
 })();
